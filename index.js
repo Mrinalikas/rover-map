@@ -6,7 +6,7 @@ $(document).ready(function(){
 var requestToserver=function(){
     var path=[];
 $.ajax({
-    url:"http://192.168.0.13:8000/all",
+    url:"http://127.0.0.1:8000/all",
     type: "GET",
     async:true,
 

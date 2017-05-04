@@ -3,16 +3,16 @@
 function initMap(path) {
     console.log(JSON.stringify(path));
     var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 30,
-        center: {lat: 25.2632708, lng: 82.9932026},
-        mapTypeId: 'terrain'
+        zoom: 20,
+        center: {lat: path[0].lat, lng: path[0].lng},
+        mapTypeId: 'roadmap'
+        //'roadmap', 'satellite', 'hybrid', 'terrain'
     });
-
 
     var flightPath = new google.maps.Polyline({
         path: path,
         geodesic: true,
-        strokeColor: '#FF0000',
+        strokeColor: '#5BAED5',
         strokeOpacity: 1.0,
         strokeWeight: 2
     });
