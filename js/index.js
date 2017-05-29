@@ -5,13 +5,12 @@ var date2;
 var date1;
 var pathNum;
 var contentString;
-var dateNtime=[[]];
 $(document).ready(function () {
     var fromdate, todate;
 
       $('#datetimepicker6').datetimepicker();
      $('#datetimepicker7').datetimepicker({
-     useCurrent: false //Important! See issue #1075
+     useCurrent: false
      });
      $("#datetimepicker6").data("DateTimePicker").clear(true);
      $("#datetimepicker7").data("DateTimePicker").clear(true);
@@ -167,7 +166,7 @@ function sendDateToServer(info) {
                 var latLng = new google.maps.LatLng(response.data[i].latitude, response.data[i].longitude);
                 path[pathNum].push(latLng);
             }
-           // console.log(path.length);
+
 
         },
         error: function (response, status, error) {
@@ -182,36 +181,5 @@ function sendDateToServer(info) {
         cache: false,
         contentType: 'application/json',
         processData: false
-    })
-}
-
-var requestToserver = function () {
-
-    $.ajax({
-        url: "http://127.0.0.1:8000/all",
-        type: "GET",
-        async: true,
-
-        success: function (response) {
-            console.log(JSON.stringify(response));
-            console.log(response);
-            for (var i = 0; i < response.data.length - 3; i++) {
-                path.push({lat: response.data[i].latitude, lng: response.data[i].longitude});
-            }
-        },
-        error: function (response, status, error) {
-            console.log('response: ' + response + '\n status: ' + status + ' \nerr:' + error);
-        },
-        complete: function () {
-            drawPath();
-
-        },
-        progress: function () {
-
-        },
-        cache: false,
-        contentType: false,
-        processData: false
-
     })
 };
